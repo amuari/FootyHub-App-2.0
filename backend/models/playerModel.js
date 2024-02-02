@@ -1,7 +1,7 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose')
 
 const PlayerSchema = new mongoose.Schema({
-  firstName:{
+  firstName: {
     type: String,
     required: true,
   },
@@ -9,14 +9,12 @@ const PlayerSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
- 
+
   age: {
     type: String,
-    
   },
   likes: {
-    type: String,
-    
+    type: Number,
   },
   image: {
     type: String,
@@ -32,18 +30,18 @@ const PlayerSchema = new mongoose.Schema({
   },
   country: {
     type: String,
-    required:true    
+    required: true,
   },
-  
+
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
+    ref: 'User',
   },
   createdAt: {
     type: Date,
     default: Date.now,
   },
-});
+})
 
-//MongoDB Collection named here - will give lowercase plural of name 
-module.exports = mongoose.model("Player", PlayerSchema);
+//MongoDB Collection named here - will give lowercase plural of name
+module.exports = mongoose.model('Player', PlayerSchema)

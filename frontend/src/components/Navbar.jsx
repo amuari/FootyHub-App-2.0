@@ -16,7 +16,7 @@ const Navbar = () => {
           <summary>
             Menu
           </summary>
-          <ul className="p-2 bg-base-100 rounded-t-none">
+          <ul className="p-2  rounded-t-none">
             <li><Link to='/login'>Login</Link></li>
             {/* <li><a>Link</a></li> */}
           </ul>

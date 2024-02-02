@@ -1,17 +1,19 @@
-const express = require("express");
-const router = express.Router();
-const authController = require("../controllers/auth");
+const express = require('express')
+const router = express.Router()
+const authController = require('../controllers/auth')
 // const homeController = require("../controllers/home");
-const playersController = require("../controllers/players");
-const { ensureAuth, ensureGuest } = require("../middleware/auth");
+const playersController = require('../controllers/players')
+const upload = require('../middleware/multer')
+const { ensureAuth, ensureGuest } = require('../middleware/auth')
 
 //Main Routes - simplified for now
-// router.get("/", homeController.getIndex);
-router.get("/profile", ensureAuth, playersController.getPlayers);
-router.get("/dashboard", ensureAuth,playersController.createPlayer);
-router.get("/profile/:id", ensureAuth, playersController.getPlayer);
-router.get("/feed", ensureAuth, playersController.getFeed);
-router.get("/logout", authController.logout);
-
-
-module.exports = router;
+router.get('/', ensureGuest, playersController.getFeed)
+router.get('/:playerID', ensureAuth, playersController.getPlayers)
+router.post(
+  '/createplayer',
+  upload.single('image'),
+  playersController.createPlayer
+)
+router.put('/editplayer/:playerID', playersController.likePlayer)
+router.delete('/deleteplayer/:playerID', playersController.deletePlayer)
+module.exports = router
