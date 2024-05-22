@@ -34,6 +34,7 @@ const PlayerDetails = () => {
   }
 
   if (error) {
+    // Render the error message directly, not the function itself
     return <p>{error}</p>
   }
 
