@@ -66,6 +66,7 @@ const DashboardPage = () => {
       setImage(null)
 
       // Redirect to a certain route
+      
       history.push('/profiles')
 
       // TODO: Handle success, show a success message, etc.

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 
@@ -9,12 +9,13 @@ const PlayerDetails = () => {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    const fetchPlayerDetails = async (playerId) => {
+    const fetchPlayerDetails = async () => {
       try {
         const response = await axios.get(
           `http://localhost:8080/players/${playerId}`
         )
         setPlayer(response.data)
+        console.log(response)
       } catch (error) {
         console.error('Error fetching player details:', error.message)
         setError('Error fetching player details. Please try again.')
@@ -23,9 +24,8 @@ const PlayerDetails = () => {
       }
     }
 
-    // Check if id is truthy before making the API request
     if (id) {
-      fetchPlayerDetails(id)
+      fetchPlayerDetails()
     }
   }, [id])
 
@@ -36,6 +36,10 @@ const PlayerDetails = () => {
   if (error) {
     // Render the error message directly, not the function itself
     return <p>{error}</p>
+  }
+
+  if (!player) {
+    return <p>No player found with the specified ID.</p>
   }
 
   // Render player details here

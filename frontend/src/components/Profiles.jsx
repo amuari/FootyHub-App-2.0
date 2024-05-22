@@ -29,10 +29,10 @@ const Profiles = () => {
   if (loading) {
     return (
       <div className='flex items-center align-middle'>
-        <span className='loading loading-ring loading-xs'></span>
+        {/* <span className='loading loading-ring loading-xs'></span>
         <span className='loading loading-ring loading-sm'></span>
         <span className='loading loading-ring loading-md'></span>
-        <span className='loading loading-ring loading-lg'></span>
+        <span className='loading loading-ring loading-lg'></span> */}
       </div>
     )
   }
@@ -52,23 +52,7 @@ const Profiles = () => {
       setError('Error fetching players. Please try again.')
     }
   }
-  // const handleLike = async (playerId) => {
-  //   try {
-  //     const response = await axios.put(
-  //       `http://localhost:8080/editplayer/${playerId}`
-  //     )
-  //     // Assuming the API returns the updated player object
-  //     setPlayers((prevPlayers) =>
-  //       prevPlayers.map((player) =>
-  //         player._id === playerId
-  //           ? { ...player, likes: response.data.likes }
-  //           : player
-  //       )
-  //     )
-  //   } catch (error) {
-  //     console.error('Error updating like:', error.message)
-  //   }
-  // }
+
   return (
     <main className='bg-[#262626]'>
       <Navbar />

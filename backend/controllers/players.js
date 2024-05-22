@@ -16,6 +16,7 @@ module.exports = {
     // const playerId = await Players.findById({ _id: req.params.id })
     try {
       const player = await Players.findById(playerId)
+      console.log(player)
       res.status(200).json(player)
       if (!player) {
         throw new Error('player not found')
