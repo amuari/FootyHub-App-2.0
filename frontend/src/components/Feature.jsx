@@ -3,6 +3,8 @@ import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 
 import one from '../img/f1.jpg'
+import two from '../img/pro.jpg'
+import soccer from '../img/soccer.jpg'
 
 export const Feature = () => {
   return (
@@ -18,7 +20,7 @@ export const Feature = () => {
         />
       </TextParallaxContent>
       <TextParallaxContent
-        imgUrl='https://images.unsplash.com/photo-1530893609608-32a9af3aa95c?q=80&w=2564&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+        imgUrl={two}
         subheading='Quality'
         heading='Never compromise.'
       >
@@ -28,7 +30,7 @@ export const Feature = () => {
         />
       </TextParallaxContent>
       <TextParallaxContent
-        imgUrl='https://images.unsplash.com/photo-1504610926078-a1611febcad3?q=80&w=2416&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+        imgUrl={soccer}
         subheading='Growth'
         heading='Get ready for the best.'
       >

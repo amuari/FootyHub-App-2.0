@@ -19,24 +19,23 @@ export default function SignupFormDemo() {
     }
   }
   return (
-    <div className='max-w-md w-full h-fit  mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-background '>
+    <div className='max-w-md w-full h-fit  mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-secondary '>
       <h2 className='font-bold text-xl text-neutral-800 dark:text-neutral-200'>
         Welcome to Footyhub
       </h2>
-      {/* <p className='text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300'>
-        Login to aceternity if you can because we don&apos;t have a login flow
-        yet
-      </p> */}
+      <p className='text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300'>
+        Login to footyhub for a better experience
+      </p>
 
       <form className='my-8' onSubmit={handleSubmit}>
-        {/* <div className='flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4'>
+        <div className='flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4'>
           <LabelInputContainer>
             <Label htmlFor='firstname'>First name</Label>
-            <Input id='firstname' placeholder='Tyler' type='text' />
+            <Input id='firstname' placeholder='Derrick' type='text' />
           </LabelInputContainer>
           <LabelInputContainer>
             <Label htmlFor='lastname'>Last name</Label>
-            <Input id='lastname' placeholder='Durden' type='text' />
+            <Input id='lastname' placeholder='Amuari' type='text' />
           </LabelInputContainer>
         </div>
         <LabelInputContainer className='mb-4'>
@@ -47,7 +46,7 @@ export default function SignupFormDemo() {
           <Label htmlFor='password'>Password</Label>
           <Input id='password' placeholder='••••••••' type='password' />
         </LabelInputContainer>
-        <LabelInputContainer className='mb-8'>
+        {/* <LabelInputContainer className='mb-8'>
           <Label htmlFor='twitterpassword'>Your twitter password</Label>
           <Input id='twitterpassword' placeholder='••••••••' type='password' />
         </LabelInputContainer> */}
@@ -65,7 +64,7 @@ export default function SignupFormDemo() {
         <div className='flex flex-col space-y-4'>
           <a href='http://localhost:8080/auth/google'>
             <button
-              className='relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 '
+              className=' bg-[#fa3d3b] text-background relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 '
               type='button'
               onClick={handleGoogleLogin}
             >
@@ -76,16 +75,19 @@ export default function SignupFormDemo() {
               <BottomGradient />
             </button>
           </a>
-          <button
-            className='bg-text relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 ]'
-            type='button'
-          >
-            <IconX className='h-4 w-4 text-neutral-800 dark:text-neutral-300 bg-background' />
-            <span className='text-background  dark:text-neutral-300 text-sm'>
-              Twitter
-            </span>
-            <BottomGradient />
-          </button>
+
+          <a href='http://localhost:8080/auth/twitter'>
+            <button
+              className='bg-text relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 ]'
+              type='button'
+            >
+              <IconX className='h-4 w-4 text-neutral-800 dark:text-neutral-300 bg-background' />
+              <span className='text-background  dark:text-neutral-300 text-sm'>
+                Twitter
+              </span>
+              <BottomGradient />
+            </button>
+          </a>
 
           <button
             className=' bg-accent relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 '

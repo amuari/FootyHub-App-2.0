@@ -14,7 +14,7 @@ const section2 = () => {
             <span className=''> Kickstart</span> your{' '}
             <span className=''>dreams</span> with{' '}
           </span>
-          <span className='text-secondary'>FOOTYHUB</span>
+          <span className='text-primary'>FOOTYHUB</span>
         </h3>
         <p className='text-base md:text-lg text-text  my-4 md:my-6'>
           Scouts worldwide can discover your talent, connect with you directly,
