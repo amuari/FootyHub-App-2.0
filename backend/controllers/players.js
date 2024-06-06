@@ -47,6 +47,7 @@ module.exports = {
         image: result.secure_url,
         cloudinaryId: result.public_id,
         likes: 0,
+        traits: req.body.traits,
         // user: req.user.id,
       })
       console.log('Player Profile Added!')

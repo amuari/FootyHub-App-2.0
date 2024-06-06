@@ -2,7 +2,7 @@
 // ... (imports and other code)
 import { useState } from 'react'
 import axios from 'axios'
-import Navbar from '../components/Navbar'
+import Navbar2 from '../components/Navbar2'
 import { Link } from 'react-router-dom'
 
 const DashboardPage = () => {
@@ -10,6 +10,7 @@ const DashboardPage = () => {
   const [lastName, setLastname] = useState('')
   const [age, setAge] = useState('')
   const [country, setCountry] = useState('')
+  const [traits, setTraits] = useState('')
   const [position, setPosition] = useState('')
   const [image, setImage] = useState(null)
 
@@ -27,6 +28,9 @@ const DashboardPage = () => {
 
   const handleCountryChange = (event) => {
     setCountry(event.target.value)
+  }
+  const handleTraitsChange = (event) => {
+    setTraits(event.target.value)
   }
 
   const handlePositionChange = (event) => {
@@ -47,6 +51,7 @@ const DashboardPage = () => {
       formData.append('age', age)
       formData.append('country', country)
       formData.append('position', position)
+      formData.append('position', traits)
       if (image) {
         formData.append('image', image)
       }
@@ -63,10 +68,11 @@ const DashboardPage = () => {
       setAge('')
       setCountry('')
       setPosition('')
+      setTraits('')
       setImage(null)
 
       // Redirect to a certain route
-      
+
       history.push('/profiles')
 
       // TODO: Handle success, show a success message, etc.
@@ -79,8 +85,8 @@ const DashboardPage = () => {
   }
 
   return (
-    <main className='bg-[#262626] text-[#e7e7e7]'>
-      <Navbar />
+    <main className='bg-accent text-text w-full'>
+      <Navbar2 />
       <form
         action='/createplayer'
         method='POST'
@@ -95,8 +101,8 @@ const DashboardPage = () => {
               fuga autem eum!
             </p>
           </div>
-          <div className='grid grid-cols-6 gap-4 col-span-full lg:col-span-3'>
-            <div className='col-span-full sm:col-span-3'>
+          <div className='grid grid-cols-6 gap-4 col-span-full lg:col-span-3 text-text'>
+            <div className='col-span-full sm:col-span-3 text-text'>
               <label htmlFor='firstName' className='text-sm'>
                 First name
               </label>
@@ -104,7 +110,12 @@ const DashboardPage = () => {
                 id='firstName'
                 type='text'
                 placeholder=''
-                className='w-full rounded-md focus:ring border-[#08243a] text-[#f98538]'
+                className='flex h-10  border-none bg-gray-50 dark:bg-zinc-800 text-black dark:text-white shadow-input  px-3 py-2 text-sm file:border-0 file:bg-transparent 
+                file:text-sm file:font-medium placeholder:text-neutral-400 dark:placeholder-text-neutral-600 
+                focus-visible:outline-none focus-visible:ring-[2px] focus-visible:ring-neutral-400 dark:focus-visible:ring-neutral-600
+                disabled:cursor-not-allowed disabled:opacity-50
+                dark:shadow-[0px_0px_1px_1px_var(--neutral-700)]
+                group-hover/input:shadow-none transition duration-400 w-full rounded-md focus:ring border-[#08243a] text-text'
                 name='firstName'
                 value={firstName}
                 onChange={handleFirstnameChange}
@@ -118,7 +129,12 @@ const DashboardPage = () => {
                 id='lastName'
                 type='text'
                 placeholder=''
-                className='w-full rounded-md focus:ring border-[#08243a] text-[#f98538]'
+                className='flex h-10 w-full border-none bg-gray-50 dark:bg-zinc-800 text-black dark:text-white shadow-input rounded-md px-3 py-2 text-sm file:border-0 file:bg-transparent 
+                file:text-sm file:font-medium placeholder:text-neutral-400 dark:placeholder-text-neutral-600 
+                focus-visible:outline-none focus-visible:ring-[2px] focus-visible:ring-neutral-400 dark:focus-visible:ring-neutral-600
+                disabled:cursor-not-allowed disabled:opacity-50
+                dark:shadow-[0px_0px_1px_1px_var(--neutral-700)]
+                group-hover/input:shadow-none transition duration-400  focus:ring border-[#08243a] '
                 name='lastName'
                 value={lastName}
                 onChange={handleLastNameChange}
@@ -132,7 +148,12 @@ const DashboardPage = () => {
                 id='age'
                 type='number'
                 placeholder=''
-                className='w-full rounded-md focus:ring border-[#08243a] text-[#f98538]'
+                className='flex h-10 w-full border-none bg-gray-50 dark:bg-zinc-800 text-black dark:text-white shadow-input rounded-md px-3 py-2 text-sm file:border-0 file:bg-transparent 
+                file:text-sm file:font-medium placeholder:text-neutral-400 dark:placeholder-text-neutral-600 
+                focus-visible:outline-none focus-visible:ring-[2px] focus-visible:ring-neutral-400 dark:focus-visible:ring-neutral-600
+                disabled:cursor-not-allowed disabled:opacity-50
+                dark:shadow-[0px_0px_1px_1px_var(--neutral-700)]
+                group-hover/input:shadow-none transition duration-400 '
                 name='age'
                 value={age}
                 onChange={handleAgeChange}
@@ -146,7 +167,12 @@ const DashboardPage = () => {
                 id='position'
                 type='text'
                 placeholder=''
-                className='w-full rounded-md focus:ring border-[#08243a] text-[#f98538]'
+                className='flex h-10 w-full border-none bg-gray-50 dark:bg-zinc-800 text-black dark:text-white shadow-input rounded-md px-3 py-2 text-sm file:border-0 file:bg-transparent 
+                file:text-sm file:font-medium placeholder:text-neutral-400 dark:placeholder-text-neutral-600 
+                focus-visible:outline-none focus-visible:ring-[2px] focus-visible:ring-neutral-400 dark:focus-visible:ring-neutral-600
+                disabled:cursor-not-allowed disabled:opacity-50
+                dark:shadow-[0px_0px_1px_1px_var(--neutral-700)]
+                group-hover/input:shadow-none transition duration-400'
                 name='position'
                 value={position}
                 onChange={handlePositionChange}
@@ -160,10 +186,34 @@ const DashboardPage = () => {
                 id='country'
                 type='text'
                 placeholder=''
-                className='w-full rounded-md focus:ring border-[#08243a] text-[#f98538]'
+                className='flex h-10 w-full border-none bg-gray-50 dark:bg-zinc-800 text-black dark:text-white shadow-input rounded-md px-3 py-2 text-sm file:border-0 file:bg-transparent 
+                file:text-sm file:font-medium placeholder:text-neutral-400 dark:placeholder-text-neutral-600 
+                focus-visible:outline-none focus-visible:ring-[2px] focus-visible:ring-neutral-400 dark:focus-visible:ring-neutral-600
+                disabled:cursor-not-allowed disabled:opacity-50
+                dark:shadow-[0px_0px_1px_1px_var(--neutral-700)]
+                group-hover/input:shadow-none transition duration-400'
                 name='country'
                 value={country}
                 onChange={handleCountryChange}
+              />
+            </div>
+            <div className='col-span-full'>
+              <label htmlFor='traits' className='text-sm'>
+                traits
+              </label>
+              <input
+                id='traits'
+                type='text'
+                placeholder='e.g passing,vision,ball control,first touch'
+                className='flex h-10 w-full border-none bg-gray-50 dark:bg-zinc-800 text-black dark:text-white shadow-input rounded-md px-3 py-2 text-sm file:border-0 file:bg-transparent 
+                file:text-sm file:font-medium placeholder:text-neutral-400 dark:placeholder-text-neutral-600 
+                focus-visible:outline-none focus-visible:ring-[2px] focus-visible:ring-neutral-400 dark:focus-visible:ring-neutral-600
+                disabled:cursor-not-allowed disabled:opacity-50
+                dark:shadow-[0px_0px_1px_1px_var(--neutral-700)]
+                group-hover/input:shadow-none transition duration-400'
+                name='traits'
+                value={traits}
+                onChange={handleTraitsChange}
               />
             </div>
           </div>
@@ -178,7 +228,7 @@ const DashboardPage = () => {
               type='file'
               name='image'
               id='image'
-              className='px-8 py-12 border-2 border-dashed rounded-md'
+              className='px-8 py-12 border-2 border-dashed  rounded-md'
               onChange={handleImageChange}
             />
           </div>
@@ -186,7 +236,7 @@ const DashboardPage = () => {
         <button
           onClick={handlesubmit}
           type='submit' // Change the button type to submit
-          className='px-8 py-3 w-1/4 font-semibold rounded-full dark:bg-[#e7e7e7] dark:text-[#5d5d5d]'
+          className='px-8 py-3 w-1/4 font-semibold rounded-full bg-primary'
         >
           Submit
         </button>

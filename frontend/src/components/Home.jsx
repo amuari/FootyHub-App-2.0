@@ -8,6 +8,7 @@ const Home = () => {
   return (
     <main className='bg-background max-h-full '>
       <Navbar2 />
+
       <Section2 />
       <Feature />
       <AboutUs />

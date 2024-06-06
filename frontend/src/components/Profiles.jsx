@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import Navbar from './Navbar'
+import Navbar2 from './Navbar2'
 import { Link } from 'react-router-dom'
+import DottedButton from './Button'
+
 // import { FaHeart } from 'react-icons/fa'
 
 const Profiles = () => {
@@ -54,11 +56,14 @@ const Profiles = () => {
   }
 
   return (
-    <main className='bg-[#262626]'>
-      <Navbar />
+    <main className='bg-background'>
+      <Navbar2 />
       <Link to='/dashboard'>
-        <button className='btn-sm rounded-none glass flex items-end bg-[#2a2727] text-[#08243a] font-bold'>
-          Create Player
+        <button className='group/button relative overflow-hidden rounded-md border border-red-500/20 bg-secondary px-4 py-1 text-base font-medium text-text transition-all duration-150 hover:border-red-500 active:scale-95'>
+          <span className='absolute bottom-0 left-0 z-0 h-0 w-full bg-gradient-to-t from-primary to-accent transition-all duration-500 group-hover/button:h-full' />
+          <span className='relative z-10 transition-all duration-500 group-hover/button:text-white'>
+            Add profile
+          </span>
         </button>
       </Link>
 
@@ -89,6 +94,9 @@ const Profiles = () => {
                   </p>
                   <p className='px-5 text-xs sm:text-base dark:text-gray-400'>
                     Country: {player.country}
+                  </p>
+                  <p className='px-5 text-xs sm:text-base dark:text-gray-400'>
+                    Traits: {player.traits}
                   </p>
                   {/* <p className='px-5 text-xs sm:text-base dark:text-gray-400'>
                   likes: {player.likes}

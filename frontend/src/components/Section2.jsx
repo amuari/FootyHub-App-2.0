@@ -22,7 +22,8 @@ const section2 = () => {
           to new heights. Join our vibrant community where passion meets
           opportunity, one profile at a time!.
         </p>
-        <DottedButton name='Get Started' />
+
+        <DottedButton />
       </div>
       <ShuffleGrid />
     </section>

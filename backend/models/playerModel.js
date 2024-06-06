@@ -28,6 +28,10 @@ const PlayerSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  traits: {
+    type: String,
+    require: true,
+  },
   country: {
     type: String,
     required: true,
