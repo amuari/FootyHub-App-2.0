@@ -11,14 +11,14 @@ const section2 = () => {
         </span>
         <h3 className='text-4xl md:text-6xl font-semibold'>
           <span className='text-pretty  text-text'>
-            <span className=''> Kickstart</span> your{' '}
-            <span className=''>dreams</span> with{' '}
+            <span className=''> Kickstart</span> your
+            <span className=''>dreams</span> with
           </span>
           <span className='text-primary'>FOOTYHUB</span>
         </h3>
         <p className='text-base md:text-lg text-text  my-4 md:my-6'>
           Scouts worldwide can discover your talent, connect with you directly,
-          and <span className='text-primary'>propel your football journey</span>{' '}
+          and <span className='text-primary'>propel your football journey</span>
           to new heights. Join our vibrant community where passion meets
           opportunity, one profile at a time!.
         </p>

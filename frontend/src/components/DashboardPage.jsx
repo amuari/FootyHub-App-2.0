@@ -10,7 +10,6 @@ const DashboardPage = () => {
   const [lastName, setLastname] = useState('')
   const [age, setAge] = useState('')
   const [country, setCountry] = useState('')
-  const [traits, setTraits] = useState('')
   const [position, setPosition] = useState('')
   const [image, setImage] = useState(null)
 
@@ -29,10 +28,6 @@ const DashboardPage = () => {
   const handleCountryChange = (event) => {
     setCountry(event.target.value)
   }
-  const handleTraitsChange = (event) => {
-    setTraits(event.target.value)
-  }
-
   const handlePositionChange = (event) => {
     setPosition(event.target.value)
   }
@@ -51,7 +46,7 @@ const DashboardPage = () => {
       formData.append('age', age)
       formData.append('country', country)
       formData.append('position', position)
-      formData.append('position', traits)
+
       if (image) {
         formData.append('image', image)
       }
@@ -68,7 +63,7 @@ const DashboardPage = () => {
       setAge('')
       setCountry('')
       setPosition('')
-      setTraits('')
+
       setImage(null)
 
       // Redirect to a certain route
@@ -195,25 +190,6 @@ const DashboardPage = () => {
                 name='country'
                 value={country}
                 onChange={handleCountryChange}
-              />
-            </div>
-            <div className='col-span-full'>
-              <label htmlFor='traits' className='text-sm'>
-                traits
-              </label>
-              <input
-                id='traits'
-                type='text'
-                placeholder='e.g passing,vision,ball control,first touch'
-                className='flex h-10 w-full border-none bg-gray-50 dark:bg-zinc-800 text-black dark:text-white shadow-input rounded-md px-3 py-2 text-sm file:border-0 file:bg-transparent 
-                file:text-sm file:font-medium placeholder:text-neutral-400 dark:placeholder-text-neutral-600 
-                focus-visible:outline-none focus-visible:ring-[2px] focus-visible:ring-neutral-400 dark:focus-visible:ring-neutral-600
-                disabled:cursor-not-allowed disabled:opacity-50
-                dark:shadow-[0px_0px_1px_1px_var(--neutral-700)]
-                group-hover/input:shadow-none transition duration-400'
-                name='traits'
-                value={traits}
-                onChange={handleTraitsChange}
               />
             </div>
           </div>

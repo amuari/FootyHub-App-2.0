@@ -36,7 +36,7 @@ const Navbar2 = () => {
           href='#'
           className=' border-transparent hover:text-gray-800 transition-colors duration-300 transform dark:hover:text-gray-200 hover:border-blue-500 mx-1.5 sm:mx-6'
         >
-          <UserButton />
+          <UserButton showName afterSignOutUrl='/' />
         </Link>
 
         <Link
