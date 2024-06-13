@@ -51,6 +51,7 @@ module.exports = {
         // user: req.user.id,
       })
       console.log('Player Profile Added!')
+      res.redirect('/profiles')
     } catch (err) {
       console.log(err)
       res.status(500).send(err)

@@ -1,17 +1,13 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import Navbar2 from './Navbar2'
 import { Link } from 'react-router-dom'
-import DottedButton from './Button'
-
-// import { FaHeart } from 'react-icons/fa'
+import Navbar2 from './Navbar2'
 
 const Profiles = () => {
   const [players, setPlayers] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
-  // fetch players from database
   useEffect(() => {
     const fetchPlayers = async () => {
       try {
@@ -27,14 +23,11 @@ const Profiles = () => {
 
     fetchPlayers()
   }, [])
-  // loading
+
   if (loading) {
     return (
-      <div className='flex items-center align-middle'>
-        {/* <span className='loading loading-ring loading-xs'></span>
-        <span className='loading loading-ring loading-sm'></span>
-        <span className='loading loading-ring loading-md'></span>
-        <span className='loading loading-ring loading-lg'></span> */}
+      <div className='flex justify-center items-center h-screen'>
+        <div className='loader'>Loading...</div>
       </div>
     )
   }
@@ -50,67 +43,51 @@ const Profiles = () => {
       )
       console.log(response.data)
     } catch (error) {
-      console.error('Error fetching players:', error.message)
-      setError('Error fetching players. Please try again.')
+      console.error('Error fetching player:', error.message)
+      setError('Error fetching player. Please try again.')
     }
   }
 
   return (
-    <main className='bg-background'>
+    <main className='bg-background min-h-screen'>
       <Navbar2 />
-      <Link to='/dashboard'>
-        <button className='group/button relative overflow-hidden rounded-md border border-red-500/20 bg-secondary px-4 py-1 text-base font-medium text-text transition-all duration-150 hover:border-red-500 active:scale-95'>
-          <span className='absolute bottom-0 left-0 z-0 h-0 w-full bg-gradient-to-t from-primary to-accent transition-all duration-500 group-hover/button:h-full' />
-          <span className='relative z-10 transition-all duration-500 group-hover/button:text-white'>
-            Add profile
-          </span>
-        </button>
-      </Link>
-
-      {players.map((player) => (
-        <div key={player._id}>
-          <div className='flex flex-col align-middle  items-center justify-center max-w-xs p-6  shadow-md gap-14   bg-[#2a272727] mx-72  text-gray-700'>
-            <Link
-              to={`/player/${player._id}`}
-              onClick={() => getSinglePlayer(player._id)}
+      <div className='container mx-auto p-4'>
+        <Link to='/addplayer'>
+          <button className='group/button relative overflow-hidden rounded-md border border-red-500/20 bg-secondary px-4 py-1 text-base font-medium text-text transition-all duration-150 hover:border-red-500 active:scale-95'>
+            <span className='absolute bottom-0 left-0 z-0 h-0 w-full bg-gradient-to-t from-primary to-accent transition-all duration-500 group-hover/button:h-full' />
+            <span className='relative z-10 transition-all duration-500 group-hover/button:text-white'>
+              Add profile
+            </span>
+          </button>
+        </Link>
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6'>
+          {players.map((player) => (
+            <div
+              key={player._id}
+              className='bg-background  text-text p-4 rounded-lg shadow-md hover:shadow-lg transition'
             >
-              <img
-                src={player.image}
-                alt={`Profile of ${player.firstName} ${player.lastName}`}
-                className='w-32 h-32 mx-auto rounded-full dark:bg-gray-500 aspect-square object-cover'
-              />
-              <div className='space-y-4 text-center divide-y dark:divide-gray-700'>
-                <div className='my-2 space-y-1'>
-                  <h2 className='text-xl font-semibold sm:text-2xl'>
-                    <div className='flex'>
-                      Name: {player.firstName} {player.lastName}
-                    </div>
+              <Link
+                to={`/player/${player._id}`}
+                onClick={() => getSinglePlayer(player._id)}
+              >
+                <img
+                  src={player.image}
+                  alt={`Profile of ${player.firstName} ${player.lastName}`}
+                  className='w-32 h-32 mx-auto rounded-full object-cover'
+                />
+                <div className='mt-4 text-center'>
+                  <h2 className='text-lg font-semibold'>
+                    {player.firstName} {player.lastName}
                   </h2>
-                  <p className='px-5 text-xs sm:text-base dark:text-gray-400'>
-                    Age: {player.age}
-                  </p>
-                  <p className='px-5 text-xs sm:text-base dark:text-gray-400'>
-                    Position: {player.position}
-                  </p>
-                  <p className='px-5 text-xs sm:text-base dark:text-gray-400'>
-                    Country: {player.country}
-                  </p>
-                  <p className='px-5 text-xs sm:text-base dark:text-gray-400'>
-                    Traits: {player.traits}
-                  </p>
-                  {/* <p className='px-5 text-xs sm:text-base dark:text-gray-400'>
-                  likes: {player.likes}
-                </p> */}
-                  {/* <div className='flex justify-between'>
-                  <span></span>
-                  <FaHeart onClick={() => handleLike(player._id)} color='red' />
-                </div> */}
+                  <p className='text-gray-600'>Age: {player.age}</p>
+                  <p className='text-gray-600'>Position: {player.position}</p>
+                  <p className='text-gray-600'>Country: {player.country}</p>
                 </div>
-              </div>
-            </Link>
-          </div>
+              </Link>
+            </div>
+          ))}
         </div>
-      ))}
+      </div>
     </main>
   )
 }

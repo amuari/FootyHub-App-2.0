@@ -2,10 +2,11 @@
 // ... (imports and other code)
 import { useState } from 'react'
 import axios from 'axios'
-import Navbar2 from '../components/Navbar2'
-import { Link } from 'react-router-dom'
+import Navbar2 from './Navbar2'
 
-const DashboardPage = () => {
+import { Link, redirect } from 'react-router-dom'
+
+const AddPlayer = () => {
   const [firstName, setFirstname] = useState('')
   const [lastName, setLastname] = useState('')
   const [age, setAge] = useState('')
@@ -67,8 +68,7 @@ const DashboardPage = () => {
       setImage(null)
 
       // Redirect to a certain route
-
-      history.push('/profiles')
+      redirect('/profiles')
 
       // TODO: Handle success, show a success message, etc.
     } catch (error) {
@@ -218,13 +218,12 @@ const DashboardPage = () => {
         </button>
       </form>
       <div className='m-72'>
-        <Link to='/profile' className='link'>
+        <Link to='/profiles' className='link'>
           Back to Feed
         </Link>
       </div>
-      {/* ... (existing code) */}
     </main>
   )
 }
 
-export default DashboardPage
+export default AddPlayer
