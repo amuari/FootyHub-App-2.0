@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import Navbar2 from './Navbar2'
+import { useAuth } from '@clerk/clerk-react'
 
 const Profiles = () => {
+  const { isSignedIn } = useAuth()
   const [players, setPlayers] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -21,8 +23,10 @@ const Profiles = () => {
       }
     }
 
-    fetchPlayers()
-  }, [])
+    if (isSignedIn) {
+      fetchPlayers()
+    }
+  }, [isSignedIn])
 
   if (loading) {
     return (
