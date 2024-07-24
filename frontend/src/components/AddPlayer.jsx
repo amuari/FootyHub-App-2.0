@@ -4,77 +4,57 @@ import { useState } from 'react'
 import axios from 'axios'
 import Navbar2 from './Navbar2'
 
-import { Link, redirect } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const AddPlayer = () => {
-  const [firstName, setFirstname] = useState('')
-  const [lastName, setLastname] = useState('')
-  const [age, setAge] = useState('')
-  const [country, setCountry] = useState('')
-  const [position, setPosition] = useState('')
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    age: '',
+    country: '',
+    position: '',
+  })
   const [image, setImage] = useState(null)
-
-  const handleFirstnameChange = (event) => {
-    setFirstname(event.target.value)
+  const handleChangeInput = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    })
   }
-
-  const handleLastNameChange = (event) => {
-    setLastname(event.target.value)
-  }
-
-  const handleAgeChange = (event) => {
-    setAge(event.target.value)
-  }
-
-  const handleCountryChange = (event) => {
-    setCountry(event.target.value)
-  }
-  const handlePositionChange = (event) => {
-    setPosition(event.target.value)
-  }
-
   const handleImageChange = (event) => {
     setImage(event.target.files[0])
   }
-
+  const navigate = useNavigate()
   const handlesubmit = async (e) => {
     e.preventDefault()
 
+    if (formData.age < 10) {
+      alert('Player should be older than 10')
+      return
+    }
+
     try {
-      const formData = new FormData()
-      formData.append('firstName', firstName)
-      formData.append('lastName', lastName)
-      formData.append('age', age)
-      formData.append('country', country)
-      formData.append('position', position)
+      const data = new FormData()
+      data.append('firstName', formData.firstName)
+      data.append('lastName', formData.lastName)
+      data.append('age', formData.age)
+      data.append('country', formData.country)
+      data.append('position', formData.position)
 
       if (image) {
-        formData.append('image', image)
+        data.append('image', image)
       }
 
-      await axios.post('http://localhost:8080/createplayer', formData, {
+      await axios.post('http://localhost:8080/createplayer', data, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       })
 
-      // Optionally, reset the form fields after successful submission
-      setFirstname('')
-      setLastname('')
-      setAge('')
-      setCountry('')
-      setPosition('')
-
-      setImage(null)
-
       // Redirect to a certain route
-      redirect('/profiles')
-
-      // TODO: Handle success, show a success message, etc.
+      navigate('/profiles')
     } catch (error) {
-      // Log the error to the console for debugging
       console.error(error)
-
       // TODO: Handle error, show an error message, etc.
     }
   }
@@ -86,15 +66,12 @@ const AddPlayer = () => {
         action='/createplayer'
         method='POST'
         className='container flex flex-col mx-auto space-y-12'
-        encType='multipart/form-data' // Make sure to include this for file uploads
+        encType='multipart/form-data' // always include this for file uploads
       >
         <fieldset className='grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm'>
           <div className='space-y-2 col-span-full lg:col-span-1'>
             <p className='font-medium'>Personal Information</p>
-            <p className='text-xs'>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci
-              fuga autem eum!
-            </p>
+            {/* <p className='text-xs'>Kick start your dreams</p> */}
           </div>
           <div className='grid grid-cols-6 gap-4 col-span-full lg:col-span-3 text-text'>
             <div className='col-span-full sm:col-span-3 text-text'>
@@ -112,8 +89,9 @@ const AddPlayer = () => {
                 dark:shadow-[0px_0px_1px_1px_var(--neutral-700)]
                 group-hover/input:shadow-none transition duration-400 w-full rounded-md focus:ring border-[#08243a] text-text'
                 name='firstName'
-                value={firstName}
-                onChange={handleFirstnameChange}
+                value={formData.firstName}
+                onChange={handleChangeInput}
+                required
               />
             </div>
             <div className='col-span-full sm:col-span-3'>
@@ -131,8 +109,9 @@ const AddPlayer = () => {
                 dark:shadow-[0px_0px_1px_1px_var(--neutral-700)]
                 group-hover/input:shadow-none transition duration-400  focus:ring border-[#08243a] '
                 name='lastName'
-                value={lastName}
-                onChange={handleLastNameChange}
+                value={formData.lastName}
+                onChange={handleChangeInput}
+                required
               />
             </div>
             <div className='col-span-full sm:col-span-3'>
@@ -150,8 +129,9 @@ const AddPlayer = () => {
                 dark:shadow-[0px_0px_1px_1px_var(--neutral-700)]
                 group-hover/input:shadow-none transition duration-400 '
                 name='age'
-                value={age}
-                onChange={handleAgeChange}
+                value={formData.age}
+                onChange={handleChangeInput}
+                required
               />
             </div>
             <div className='col-span-full sm:col-span-3'>
@@ -169,8 +149,9 @@ const AddPlayer = () => {
                 dark:shadow-[0px_0px_1px_1px_var(--neutral-700)]
                 group-hover/input:shadow-none transition duration-400'
                 name='position'
-                value={position}
-                onChange={handlePositionChange}
+                value={formData.position}
+                onChange={handleChangeInput}
+                required
               />
             </div>
             <div className='col-span-full'>
@@ -188,13 +169,12 @@ const AddPlayer = () => {
                 dark:shadow-[0px_0px_1px_1px_var(--neutral-700)]
                 group-hover/input:shadow-none transition duration-400'
                 name='country'
-                value={country}
-                onChange={handleCountryChange}
+                value={formData.country}
+                onChange={handleChangeInput}
               />
             </div>
           </div>
         </fieldset>
-        {/* ... (existing file input field) */}
         <fieldset className='w-full space-y-1 text-[#5d5d5d]'>
           <label htmlFor='image' className='block text-sm font-medium'>
             Upload Image
@@ -206,12 +186,13 @@ const AddPlayer = () => {
               id='image'
               className='px-8 py-12 border-2 border-dashed  rounded-md'
               onChange={handleImageChange}
+              required
             />
           </div>
         </fieldset>
         <button
           onClick={handlesubmit}
-          type='submit' // Change the button type to submit
+          type='submit'
           className='px-8 py-3 w-1/4 font-semibold rounded-full bg-primary'
         >
           Submit

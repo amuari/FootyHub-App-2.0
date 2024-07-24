@@ -3,35 +3,29 @@ const mongoose = require('mongoose')
 const PlayerSchema = new mongoose.Schema({
   firstName: {
     type: String,
-    required: true,
   },
   lastName: {
     type: String,
-    required: true,
   },
 
   age: {
-    type: String,
+    type: Number,
   },
   likes: {
     type: Number,
   },
   image: {
     type: String,
-    required: true,
   },
   position: {
     type: String,
-    required: true,
   },
   cloudinaryId: {
     type: String,
-    required: true,
   },
 
   country: {
     type: String,
-    required: true,
   },
 
   user: {

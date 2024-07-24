@@ -16,7 +16,7 @@ const Example = () => {
 // eslint-disable-next-line react/prop-types
 const CutoutTextLoader = ({ height, background, imgUrl }) => {
   return (
-    <div className='relative' style={{ height }}>
+    <div className='relative bg-background' style={{ height }}>
       <div
         className='absolute inset-0 z-0'
         style={{
