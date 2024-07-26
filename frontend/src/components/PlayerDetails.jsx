@@ -9,13 +9,13 @@ const PlayerDetails = () => {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    const fetchPlayerDetails = async () => {
+    const fetchPlayerDetails = async ({ playerId }) => {
       try {
         const response = await axios.get(
           `http://localhost:8080/players/${playerId}`
         )
         setPlayer(response.data)
-        console.log(response)
+        console.log(response.data)
       } catch (error) {
         console.error('Error fetching player details:', error.message)
         setError('Error fetching player details. Please try again.')

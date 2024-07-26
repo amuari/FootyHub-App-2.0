@@ -12,9 +12,9 @@ module.exports = {
     }
   },
   getPlayer: async (req, res) => {
-    const playerId = req.params.id
     // const playerId = await Players.findById({ _id: req.params.id })
     try {
+      const playerId = req.params.id
       const player = await Players.findById(playerId)
       console.log(player)
       res.status(200).json(player)
@@ -22,6 +22,7 @@ module.exports = {
         throw new Error('player not found')
       }
     } catch (error) {
+      res.status(500).send('Server error')
       console.log(error)
     }
   },

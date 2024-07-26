@@ -57,14 +57,14 @@ const Profiles = () => {
       <Navbar2 />
       <div className='container mx-auto p-4'>
         <Link to='/addplayer'>
-          <button className='group/button relative overflow-hidden rounded-md border border-red-500/20 bg-secondary px-4 py-1 text-base font-medium text-text transition-all duration-150 hover:border-red-500 active:scale-95'>
+          <button className=' group/button relative overflow-hidden rounded-md border border-red-500/20 bg-secondary px-4 py-1 text-base font-medium text-text transition-all duration-150 hover:border-red-500 active:scale-95'>
             <span className='absolute bottom-0 left-0 z-0 h-0 w-full bg-gradient-to-t from-primary to-accent transition-all duration-500 group-hover/button:h-full' />
             <span className='relative z-10 transition-all duration-500 group-hover/button:text-white'>
               Add profile
             </span>
           </button>
         </Link>
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6'>
+        <div className=' grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-20'>
           {players.map((player) => (
             <div
               key={player._id}
